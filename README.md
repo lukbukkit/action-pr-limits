@@ -19,6 +19,8 @@ Just pull requests from the branches `development` and `testing` to the `master`
 All other pull request, which aren't targeting `master` should also be allowed.
 
 ```yaml
+name: Limit PRs
+
 on:
   pull_request:
     branches:
