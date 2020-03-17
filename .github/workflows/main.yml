@@ -10,9 +10,7 @@ jobs:
     steps:
       - name: Limit action step
         id: limit_action
-        uses: LukBukkit/action-pr-limits@v1
+        uses: LukBukkit/action-pr-limits@v0.5
         with:
           whitelist: |
             development
-
-# A new hope
