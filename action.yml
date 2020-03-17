@@ -5,7 +5,7 @@ author: "luk.bukkit@gmail.com"
 
 runs:
   using: 'node12'
-  main: 'lib/main.js'
+  main: 'lib/index.js'
 
 inputs:
   whitelist:
