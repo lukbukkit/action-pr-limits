@@ -59,7 +59,7 @@ function handlePullRequest(allowedBranches: string[], forbiddenBranches: string[
         return;
     }
 
-    if (foundForbidden.length > 0) {
+    if (forbiddenBranches.length > 0) {
         if (foundForbidden) {
             core.error(`The pull request is forbidden. Branch '${baseRef}' has been found on the blacklist.`);
             core.setFailed(`Head branch '${baseRef}' has been found on the blacklist for '${headRef}'.`);

@@ -1,11 +1,14 @@
 {
   "compilerOptions": {
-    "module": "ES6",
-    "target": "ES2019",
+    "module": "CommonJS",
+    "target": "ES6",
     "moduleResolution": "Node",
+    "outDir": "lib/",
     "removeComments": true,
     "preserveConstEnums": true,
-    "outDir": "lib/"
+    "strict": true,
+    "noImplicitAny": true,
+    "esModuleInterop": true
   },
   "files": [
     "main.ts"
