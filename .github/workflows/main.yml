@@ -12,7 +12,7 @@ jobs:
     steps:
       - name: Limit action step
         id: limit_action
-        uses: LukBukkit/action-pr-limits@v0.6
+        uses: LukBukkit/action-pr-limits@v0.5.1
         with:
           whitelist: |
             development
