@@ -1,3 +1,5 @@
+name: Testing Workflow
+
 on:
   pull_request:
     branches:
@@ -10,7 +12,7 @@ jobs:
     steps:
       - name: Limit action step
         id: limit_action
-        uses: LukBukkit/action-pr-limits@v0.5
+        uses: LukBukkit/action-pr-limits@v0.6
         with:
           whitelist: |
             development
