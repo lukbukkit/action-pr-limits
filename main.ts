@@ -39,10 +39,10 @@ function handlePullRequest(allowedBranches: string[], forbiddenBranches: string[
 
     let pullRequest = github.context.payload as Webhooks.WebhookPayloadPullRequest;
 
-    const baseRef = pullRequest.pull_request.base.ref.toLowerCase(); // source
-    const headRef = pullRequest.pull_request.head.ref.toLowerCase(); // target
+    const headRef = pullRequest.pull_request.head.ref.toLowerCase(); // source
+    const baseRef = pullRequest.pull_request.base.ref.toLowerCase(); // target
 
-    core.info(`Pull request #${pullRequest.number}: ${baseRef} -> ${headRef}`);
+    core.info(`Pull request #${pullRequest.number}: ${headRef} -> ${baseRef}`);
     core.info(`Allowed Branches: ${JSON.stringify(allowedBranches)}`);
     core.info(`Forbidden Branches: ${JSON.stringify(forbiddenBranches)}`);
 
@@ -51,20 +51,24 @@ function handlePullRequest(allowedBranches: string[], forbiddenBranches: string[
 
     if (allowedBranches.length > 0) {
         if (foundAllowed) {
-            core.info(`The pull request is allowed. Branch '${baseRef}' has been found on the whitelist.`);
+            core.info(`The pull request is allowed. Branch '${headRef}' has been found on the whitelist.`);
         } else {
-            core.error(`The pull request is forbidden. Branch '${baseRef}' hasn't been found on the whitelist.`);
-            core.setFailed(`Head branch '${baseRef}' hasn't been found on the whitelist for '${headRef}'.`);
+            core.setFailed(
+                `The pull request is forbidden. ` +
+                `Branch '${headRef}' hasn't been found on the whitelist for '${baseRef}.`
+            );
         }
         return;
     }
 
     if (forbiddenBranches.length > 0) {
         if (foundForbidden) {
-            core.error(`The pull request is forbidden. Branch '${baseRef}' has been found on the blacklist.`);
-            core.setFailed(`Head branch '${baseRef}' has been found on the blacklist for '${headRef}'.`);
+            core.setFailed(
+                `The pull request is forbidden. ` +
+                `Branch '${headRef}' has been found on the blacklist for '${baseRef}.`
+            );
         } else {
-            core.info(`The pull request is allowed. Branch '${baseRef}' hasn't been found on the blacklist.`);
+            core.info(`The pull request is allowed. Branch '${headRef}' hasn't been found on the blacklist.`);
         }
         return;
     }
