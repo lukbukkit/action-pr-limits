@@ -14,10 +14,4 @@ jobs:
         id: limit_action
         uses: LukBukkit/action-pr-limits@v0.5.1
         with:
-          whitelist: |
-            testing
-            funfun
-          blacklist: |
-            development
 
-# Cause we want to do it right
