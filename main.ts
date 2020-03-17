@@ -22,8 +22,8 @@ function main(): void {
         return;
     }
 
-    const allowedBranches = getInputs('allowedBranches');
-    const forbiddenBranches = getInputs('forbiddenBranches');
+    const allowedBranches = getInputs('whitelist');
+    const forbiddenBranches = getInputs('blacklist');
     handlePullRequest(allowedBranches, forbiddenBranches);
 }
 
@@ -54,7 +54,7 @@ function handlePullRequest(allowedBranches: string[], forbiddenBranches: string[
             core.info(`The pull request is allowed. Branch '${baseRef}' has been found on the whitelist.`);
         } else {
             core.error(`The pull request is forbidden. Branch '${baseRef}' hasn't been found on the whitelist.`);
-            core.setFailed(`Head branch '${baseRef}' hasn't been found on the whitelist.`);
+            core.setFailed(`Head branch '${baseRef}' hasn't been found on the whitelist for '${headRef}'.`);
         }
         return;
     }
@@ -62,7 +62,7 @@ function handlePullRequest(allowedBranches: string[], forbiddenBranches: string[
     if (foundForbidden.length > 0) {
         if (foundForbidden) {
             core.error(`The pull request is forbidden. Branch '${baseRef}' has been found on the blacklist.`);
-            core.setFailed(`Head branch '${baseRef}' has been found on the blacklist.`);
+            core.setFailed(`Head branch '${baseRef}' has been found on the blacklist for '${headRef}'.`);
         } else {
             core.info(`The pull request is allowed. Branch '${baseRef}' hasn't been found on the blacklist.`);
         }

@@ -8,12 +8,12 @@ runs:
   main: 'main.ts'
 
 inputs:
-  allowedBranches:
-    description: "A whitelist for branches"
+  whitelist:
+    description: "A list of allowed branches"
     required: false
     default: ''
-  forbiddenBranches:
-    description: "A blacklist for branches"
+  blacklist:
+    description: "A list of forbidden branches"
     required: false
     default: ''
 
