@@ -8,7 +8,7 @@
   "private": true,
   "scripts": {
     "compile": "tsc",
-    "build": "ncc build main.ts -o lib"
+    "build": "ncc build main.ts -o lib -m"
   },
   "dependencies": {
     "@actions/core": "^1.2.3",
