@@ -30,11 +30,11 @@ function main(): void {
 function handlePullRequest(allowedBranches: string[], forbiddenBranches: string[]): void {
     if (allowedBranches.length > 0 && forbiddenBranches.length > 0) {
         core.warning(
-            "You should either specify a whitelist (allowedBranches) or a blacklist (forbiddenBranches). " +
+            "You should either specify a whitelist or a blacklist. " +
             "Not both at the same time! The whitelist will be used in this case."
         );
     } else if (allowedBranches.length == 0 && forbiddenBranches.length == 0) {
-        core.warning("Both the white- and the blacklist are empty.");
+        core.warning("Both the white- and the blacklist are empty!");
     }
 
     let pullRequest = github.context.payload as Webhooks.WebhookPayloadPullRequest;
