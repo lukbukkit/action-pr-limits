@@ -1,14 +1,20 @@
 {
   "name": "action-pr-limits",
   "version": "1.0.0",
-  "main": "main.ts",
+  "main": "lib/main.js",
   "repository": "git@github.com:LukBukkit/action-pr-limits.git",
   "author": "LukBukkit <luk.bukkit@gmail.com>",
   "license": "MIT",
   "private": true,
+  "scripts": {
+    "build": "tsc"
+  },
   "dependencies": {
     "@actions/core": "^1.2.3",
     "@actions/github": "^2.1.1",
     "@octokit/webhooks": "^7.1.0"
+  },
+  "devDependencies": {
+    "typescript": "^3.8.3"
   }
 }
