@@ -55,7 +55,7 @@ function handlePullRequest(allowedBranches: string[], forbiddenBranches: string[
         } else {
             core.setFailed(
                 `The pull request is forbidden. ` +
-                `Branch '${headRef}' hasn't been found on the whitelist for '${baseRef}.`
+                `Branch '${headRef}' hasn't been found on the whitelist for '${baseRef}'.`
             );
         }
         return;
@@ -65,7 +65,7 @@ function handlePullRequest(allowedBranches: string[], forbiddenBranches: string[
         if (foundForbidden) {
             core.setFailed(
                 `The pull request is forbidden. ` +
-                `Branch '${headRef}' has been found on the blacklist for '${baseRef}.`
+                `Branch '${headRef}' has been found on the blacklist for '${baseRef}'.`
             );
         } else {
             core.info(`The pull request is allowed. Branch '${headRef}' hasn't been found on the blacklist.`);
