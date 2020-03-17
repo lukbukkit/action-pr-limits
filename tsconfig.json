@@ -1,0 +1,13 @@
+{
+  "compilerOptions": {
+    "module": "ES6",
+    "target": "ES2019",
+    "moduleResolution": "Node",
+    "removeComments": true,
+    "preserveConstEnums": true,
+    "outDir": "lib/"
+  },
+  "files": [
+    "main.ts"
+  ]
+}
