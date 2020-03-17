@@ -1,2 +1,2 @@
-# action-pr-limits
-A GitHub action whichs limits pull requests on specific branches
+# Limit Pull Requests
+A GitHub action which limits pull requests on specific branches

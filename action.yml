@@ -1,0 +1,17 @@
+# https://help.github.com/en/actions/building-actions/metadata-syntax-for-github-actions
+name: "Limit Pull Requests"
+description: "Limits pull requests on specific branches"
+author: "luk.bukkit@gmail.com"
+
+runs:
+  using: 'node12'
+  main: 'main.js'
+
+inputs:
+  branchRules:
+    description: "The rules for the branches"
+    required: true
+
+branding:
+  color: "orange"
+  icon: "shield"
