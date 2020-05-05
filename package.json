@@ -1,6 +1,6 @@
 {
   "name": "action-pr-limits",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "main": "lib/index.js",
   "repository": "git@github.com:LukBukkit/action-pr-limits.git",
   "author": "LukBukkit <luk.bukkit@gmail.com>",
