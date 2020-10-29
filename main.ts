@@ -27,6 +27,12 @@ function main(): void {
     handlePullRequest(allowedBranches, forbiddenBranches);
 }
 
+function validateName(branchName: string, patterns: string[]): boolean {
+  return patterns.some(pattern =>
+    (new RegExp(pattern)).test(branchName)
+  );
+}
+
 function handlePullRequest(allowedBranches: string[], forbiddenBranches: string[]): void {
     if (allowedBranches.length > 0 && forbiddenBranches.length > 0) {
         core.warning(
@@ -46,8 +52,12 @@ function handlePullRequest(allowedBranches: string[], forbiddenBranches: string[
     core.info(`Allowed Branches: ${JSON.stringify(allowedBranches)}`);
     core.info(`Forbidden Branches: ${JSON.stringify(forbiddenBranches)}`);
 
-    const foundForbidden = forbiddenBranches.find(branch => branch === headRef);
-    const foundAllowed = allowedBranches.find(branch => branch === headRef);
+    //const foundForbidden = forbiddenBranches.find(branch => branch === headRef);
+    //const foundAllowed = allowedBranches.find(branch => branch === headRef);
+    
+    //Allow regex pattern
+    const foundForbidden = validateName(branch, forbiddenBranches);
+    const foundAllowed = validateName(branch, allowedBranches);
 
     if (allowedBranches.length > 0) {
         if (foundAllowed) {
