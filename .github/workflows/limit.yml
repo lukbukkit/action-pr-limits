@@ -8,7 +8,6 @@ on:
 jobs:
   limit_main_pr:
     runs-on: ubuntu-latest
-    name: Limits PR to main
     steps:
       - uses: actions/checkout@v2
       - uses: ./
