@@ -29,13 +29,11 @@ on:
       - main
 
 jobs:
-  limit_master_pr:
+  limit_main_pr:
     runs-on: ubuntu-latest
-    name: Limits PR to master
+    name: Limits PRs to the main branch
     steps:
-      - name: Limit action step
-        id: limit_action
-        uses: LukBukkit/action-pr-limits@v1
+      - uses: LukBukkit/action-pr-limits@v1
         with:
           allowlist: |
             development
