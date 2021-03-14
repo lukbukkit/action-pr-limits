@@ -1,0 +1,17 @@
+name: Limit PRs
+
+on:
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  limit_main_pr:
+    runs-on: ubuntu-latest
+    name: Limits PR to main
+    steps:
+      - uses: ./
+        with:
+          allowlist: |
+            development
+            testing-v([\d.]+)
