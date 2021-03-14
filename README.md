@@ -31,9 +31,8 @@ on:
 jobs:
   limit_main_pr:
     runs-on: ubuntu-latest
-    name: Limits PRs to the main branch
     steps:
-      - uses: LukBukkit/action-pr-limits@v1
+      - uses: LukBukkit/action-pr-limits@v1.1.0
         with:
           allowlist: |
             development
