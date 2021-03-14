@@ -7,16 +7,22 @@
   "license": "MIT",
   "private": true,
   "scripts": {
-    "compile": "tsc",
-    "build": "ncc build main.ts -o lib -m"
+    "build": "tsc",
+    "package": "ncc build src/main.ts -o lib --minify",
+    "test": "jest",
+    "all": "yarn run build && yarn run package && yarn run test"
   },
   "dependencies": {
     "@actions/core": "^1.2.6",
-    "@actions/github": "^2.1.1",
-    "@octokit/webhooks": "^7.1.0"
+    "@actions/github": "^4.0.0",
+    "@octokit/webhooks-definitions": "^3.62.5"
   },
   "devDependencies": {
-    "@zeit/ncc": "^0.21.1",
-    "typescript": "^3.8.3"
+    "@types/jest": "^26.0.20",
+    "@types/node": "^14.14.34",
+    "@zeit/ncc": "^0.22.3",
+    "jest": "^26.6.3",
+    "ts-jest": "^26.5.3",
+    "typescript": "^4.2.3"
   }
 }

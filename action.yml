@@ -8,11 +8,21 @@ runs:
   main: 'lib/index.js'
 
 inputs:
+  # Still supported, but deprecated
   whitelist:
     description: "A list of allowed branches"
     required: false
     default: ''
+  # Still supported, but deprecated
   blacklist:
+    description: "A list of forbidden branches"
+    required: false
+    default: ''
+  allowlist:
+    description: "A list of allowed branches"
+    required: false
+    default: ''
+  denylist:
     description: "A list of forbidden branches"
     required: false
     default: ''
