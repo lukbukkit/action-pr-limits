@@ -1,6 +1,6 @@
 import {listContains, ListResult} from '../src/check'
 
-test('list contain the entry', () => {
+test('list contains the entry', () => {
     expect(listContains('development', ['fun', 'development'])).toBe(ListResult.ON_LIST);
     expect(listContains('development', ['fun', 'develop[a-z]+'])).toBe(ListResult.ON_LIST);
     expect(listContains('develop', ['fun', 'develop[a-z]*'])).toBe(ListResult.ON_LIST);
