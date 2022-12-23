@@ -25,6 +25,7 @@ function handlePullRequest(allowedBranches: string[], forbiddenBranches: string[
     core.info(`Pull request #${pullRequestEvent.number}: ${headRef} -> ${baseRef}`);
     core.info(`Allowed Branches: ${JSON.stringify(allowedBranches)}`);
     core.info(`Forbidden Branches: ${JSON.stringify(forbiddenBranches)}`);
+    core.info(`Local Only: ${local}`);
 
     const allowDecision = listContains(headRef, allowedBranches);
     const denyDecision = listContains(headRef, forbiddenBranches);
@@ -70,6 +71,7 @@ function main(): void {
 
     const allowedBranches = getInputs('allowlist').concat(getInputs('whitelist'));
     const forbiddenBranches = getInputs('denylist').concat(getInputs('blacklist'));
+    core.info(`Local Input: ${core.getInput('local')}`);
     const local = core.getInput('local').toLowerCase() === 'true';
     handlePullRequest(allowedBranches, forbiddenBranches, local);
 }
