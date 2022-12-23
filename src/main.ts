@@ -3,7 +3,7 @@ import * as github from '@actions/github';
 import {PullRequestEvent} from '@octokit/webhooks-types';
 import {ListResult, listContains} from './check';
 
-function handlePullRequest(allowedBranches: string[], forbiddenBranches: string[]): void {
+function handlePullRequest(allowedBranches: string[], forbiddenBranches: string[], local: boolean): void {
     if (allowedBranches.length > 0 && forbiddenBranches.length > 0) {
         core.warning(
             "You should either specify a allowlist or a denylist, not both at the same time. " +
@@ -16,6 +16,9 @@ function handlePullRequest(allowedBranches: string[], forbiddenBranches: string[
 
     let pullRequestEvent = github.context.payload as PullRequestEvent;
 
+    const headRepo = pullRequestEvent.pull_request.head.repo.id; // source
+    const baseRepo = pullRequestEvent.pull_request.base.repo.id; // target
+
     const headRef = pullRequestEvent.pull_request.head.ref.toLowerCase(); // source
     const baseRef = pullRequestEvent.pull_request.base.ref.toLowerCase(); // target
 
@@ -25,6 +28,12 @@ function handlePullRequest(allowedBranches: string[], forbiddenBranches: string[
 
     const allowDecision = listContains(headRef, allowedBranches);
     const denyDecision = listContains(headRef, forbiddenBranches);
+
+    if (local && headRepo != baseRepo) {
+        core.setFailed(`The pull request is forbidden. ` +
+            `Due to the 'local' setting only pull requests from the base repository are allowed.`);
+        return;
+    }
 
     if (allowDecision == ListResult.ON_LIST) {
         core.info(`The pull request is allowed. Branch '${headRef}' has been found on the allowlist.`);
@@ -61,7 +70,8 @@ function main(): void {
 
     const allowedBranches = getInputs('allowlist').concat(getInputs('whitelist'));
     const forbiddenBranches = getInputs('denylist').concat(getInputs('blacklist'));
-    handlePullRequest(allowedBranches, forbiddenBranches);
+    const local = core.getInput('local').toLowerCase() === 'true';
+    handlePullRequest(allowedBranches, forbiddenBranches, local);
 }
 
 main();

@@ -13,11 +13,13 @@ inputs:
     description: "A list of allowed branches"
     required: false
     default: ''
+    deprecationMessage: 'The input `whitelist` is deprecated, use `allowlist`'
   # Still supported, but deprecated
   blacklist:
     description: "A list of forbidden branches"
     required: false
     default: ''
+    deprecationMessage: 'The input `blacklist` is deprecated, use `denylist`'
   allowlist:
     description: "A list of allowed branches"
     required: false
@@ -26,6 +28,11 @@ inputs:
     description: "A list of forbidden branches"
     required: false
     default: ''
+  local:
+    description: 'Set to `true` to only accept pull requests from the local repository'
+    required: false
+    default: 'false'
+
 
 branding:
   color: "orange"
