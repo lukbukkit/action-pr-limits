@@ -4,7 +4,7 @@ description: "Limits pull requests to given branches"
 author: "luk.bukkit@gmail.com"
 
 runs:
-  using: 'node16'
+  using: 'node20'
   main: 'lib/index.js'
 
 inputs:
