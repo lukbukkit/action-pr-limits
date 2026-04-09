@@ -1,7 +1,7 @@
 import * as core from '@actions/core';
 import * as github from '@actions/github';
 import {PullRequestEvent} from '@octokit/webhooks-types';
-import {ListResult, listContains} from './check';
+import {ListResult, listContains} from './check.js';
 
 function handlePullRequest(allowedBranches: string[], forbiddenBranches: string[]): void {
     if (allowedBranches.length > 0 && forbiddenBranches.length > 0) {
