@@ -1,6 +1,6 @@
 {
   "name": "action-pr-limits",
-  "version": "1.2.0",
+  "version": "1.3.0",
   "main": "lib/index.js",
   "repository": "git@github.com:LukBukkit/action-pr-limits.git",
   "author": "LukBukkit <luk.bukkit@gmail.com>",
@@ -9,7 +9,7 @@
   "scripts": {
     "build": "tsc",
     "package": "ncc build src/main.ts -o lib --minify",
-    "test": "jest",
+    "test": "NODE_OPTIONS=--experimental-vm-modules jest",
     "all": "yarn run build && yarn run test && yarn run package"
   },
   "type": "module",
@@ -24,6 +24,7 @@
     "@vercel/ncc": "^0.38.4",
     "jest": "^30.3.0",
     "ts-jest": "^29.4.9",
+    "ts-jest-resolver": "^2.0.1",
     "typescript": "^6.0.2"
   }
 }
